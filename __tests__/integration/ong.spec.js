@@ -25,5 +25,13 @@ describe('ONG', () => {
 
     expect(response.body).toHaveProperty('id');
     expect(response.body.id).toHaveLength(8);
+    expect(response.status).toBe(200);
+  });
+
+  it('should be able to retrieve ONGs list', async () => {
+    const response = await request(app).get('/ongs');
+
+    expect(response.body).toBeInstanceOf(Array);
+    expect(response.status).toBe(200);
   });
 });
